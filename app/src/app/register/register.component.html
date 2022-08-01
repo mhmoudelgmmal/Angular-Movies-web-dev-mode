@@ -1,0 +1,83 @@
+<div class="container">
+    <h1>Registration Form </h1>
+
+    
+
+    <form [formGroup]="registrationForm" (ngSubmit)="sendData(registrationForm)">
+        <label>First Name</label>
+        <input formControlName="first_name" type="text" class="form-control my-3">
+
+        <p *ngIf="registrationForm.controls['first_name']?.errors?.['required'] && registrationForm.controls['first_name'].touched" class="alert alert-danger">
+            Please Fill This input
+        </p>
+        <p *ngIf="registrationForm.controls['first_name']?.errors?.['minlength'] && registrationForm.controls['first_name'].touched" class="alert alert-danger">
+            First name Must be at least 3 charachters
+        </p>
+        <p *ngIf="registrationForm.controls['first_name']?.errors?.['maxlength'] && registrationForm.controls['first_name'].touched" class="alert alert-danger">
+            First name Must be 10 charachters
+        </p>
+
+
+
+        <label>last Name</label>
+        <input formControlName="last_name" type="text" class="form-control my-3">
+
+        <p *ngIf="registrationForm.controls['last_name']?.errors?.['required'] && registrationForm.controls['last_name'].touched" class="alert alert-danger">
+            Please Fill This input
+        </p>
+        <p *ngIf="registrationForm.controls['last_name']?.errors?.['minlength'] && registrationForm.controls['last_name'].touched" class="alert alert-danger">
+            Last name Must be at least 3 charachters
+        </p>
+        <p *ngIf="registrationForm.controls['last_name']?.errors?.['maxlength'] && registrationForm.controls['last_name'].touched" class="alert alert-danger">
+            Last name Must be 10 charachters
+        </p>
+
+        <label>age</label>
+        <input formControlName="age" type="text" class="form-control my-3">
+
+        <p *ngIf="registrationForm.controls['age']?.errors?.['required'] && registrationForm.controls['age'].touched"
+         class="alert alert-danger">
+            Please Fill This input
+        </p>
+        <p *ngIf="registrationForm.controls['age']?.errors?.['min']&& registrationForm.controls['age'].touched" 
+        class="alert alert-danger">
+            Your age must be more than 9 years old
+        </p>
+        <p *ngIf="registrationForm.controls['age']?.errors?.['max']&& registrationForm.controls['age'].touched" 
+        class="alert alert-danger">
+            Your age must be less than 81 years old
+        </p>
+
+        <label>email</label>
+        <input formControlName="email" type="text" class="form-control my-3">
+
+        <p *ngIf="registrationForm.controls['email']?.errors?.['required'] && registrationForm.controls['email'].touched" class="alert alert-danger">
+            Please Fill This input
+        </p>
+        <p *ngIf="registrationForm.controls['email']?.errors?.['email']&& registrationForm.controls['email'].touched" class="alert alert-danger">
+           You should enter valid email format
+        </p>
+        
+
+
+        <label>password</label>
+        <input formControlName="password" type="text" class="form-control my-3">
+
+        <p *ngIf="registrationForm.controls['password']?.errors?.['required'] && registrationForm.controls['password'].touched" class="alert alert-danger">
+            Please Fill This input
+        </p>
+        <p *ngIf="registrationForm.controls['password']?.errors?.['pattern']&& registrationForm.controls['password'].touched" class="alert alert-danger">
+           You should enter number password and length must be at least 3 numbers 
+        </p>
+        <button [disabled]="registrationForm.invalid" type="submit" class="btn btn-primary">Register
+            <span *ngIf="isLoading == true" class="fas fa-spinner fa-spin"></span>
+        </button>
+        <div *ngIf="errorMsg" class="my-3 alert"
+        [ngClass]="{'alert-primary': errorMsg === 'Good! You will be redirected automatically to Login form',
+         'alert-danger' : errorMsg === 'citizen validation failed: email: email already registered' }">
+
+            {{errorMsg}}
+
+        </div>
+    </form>
+</div>

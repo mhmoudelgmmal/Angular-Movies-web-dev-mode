@@ -1,0 +1,20 @@
+<div *ngIf="movieDetails !== undefined" class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <img class="w-100" [src]="ImgPath+movieDetails.poster_path" alt="">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div>
+                <h2>{{movieDetails.title}}</h2>
+                <p class="py-3">{{movieDetails.overview}}</p>
+                <ul class="list-unstyled d-flex justify-content-around">
+                    <li class="bg-primary p-1 my-3 rounded">Popularity : {{movieDetails.popularity}}</li>
+                    <li class="bg-primary p-1 my-3 rounded">Vote : {{movieDetails.vote_average}}</li>
+                    <li class="bg-primary p-1 my-3 rounded">Vote Count : {{movieDetails.vote_count}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

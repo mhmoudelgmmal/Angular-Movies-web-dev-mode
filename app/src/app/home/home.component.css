@@ -1,0 +1,9 @@
+.header{
+    background-image: url('../../assets/497283.jpg.crdownload');
+    height: 100vh;
+    background-size:cover ;
+    background-position: center center;
+}
+.imgFix{
+    height: 350px;
+}

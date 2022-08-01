@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Login Form</h1>
+    <form [formGroup]="LoginForm" (ngSubmit)="submitLoginForm(LoginForm)">
+        <label>email</label>
+        <input formControlName="email" type="email" class="form-control my-3">
+
+        <p *ngIf="LoginForm.controls['email']?.errors?.['required'] && LoginForm.controls['email'].touched" class="alert alert-danger" >
+            You have to fill this input
+        </p>
+        <p *ngIf="LoginForm.controls['email']?.errors?.['email'] && LoginForm.controls['email'].touched" class="alert alert-danger">
+            You have to enter a valid email
+        </p>
+
+        <label>Password</label>
+        <input formControlName="password" type="password" class="form-control my-3">
+        <p *ngIf="LoginForm.controls['password']?.errors?.['required'] && LoginForm.controls['password'].touched" class="alert alert-danger" >
+            You have to fill this input
+        </p>
+
+        <button [disabled]="LoginForm.invalid" type="submit" class="btn btn-primary">Register
+            <span *ngIf="isLoading == true" class="fas fa-spinner fa-spin"></span>
+        </button>
+
+        <div *ngIf="errorMsg" class="my-3 alert"
+        [ngClass]="errorMsg === 'Good! You will be redirected automatically to Home Page' ? 'alert-primary' : 'alert-danger'">
+
+            {{errorMsg}}
+
+        </div>
+    </form>
+</div>

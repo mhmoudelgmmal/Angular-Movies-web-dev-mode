@@ -1,0 +1,81 @@
+<div class="header d-flex align-items-end">
+    <div class="container">
+        <owl-carousel-o [options]="customOptions">
+                
+            <ng-container *ngFor="let movie of trendingMovies">
+              <ng-template carouselSlide [id]="movie.id">
+                <img [src]="imgPrefix+movie.poster_path">
+              </ng-template>
+            </ng-container>
+          
+          </owl-carousel-o>
+    </div>
+</div>
+    <div class="container">
+        <div class="row">
+           
+            
+         
+            <div class="col-md-4 d-flex align-items-center">
+                <div>
+                    <div class="brdr w-25 mt-3 mb-3" ></div>
+                    <div>
+                        <h2>Trending <br>
+                        Movies <br>
+                    To Watch Right Now</h2>
+                        
+                        <p class="text-muted">Most watched movies by dayys</p>
+                    </div>
+                    <div class="brdr w-100 mt-3" ></div>
+                </div>
+            </div>
+            <div *ngFor="let movie of trendingMovies" class="col-md-2">
+                <div class="movie">
+                    <img  class="w-100" [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path" alt="">
+                    <h3 class="h6 mb-3">{{movie.title}}</h3>
+                    <p class="text-muted">{{movie.overview|seemore}}
+                        <span [routerLink]="['/singlemovie',movie.id,movie.title]" class="text-light cursor-pointer">seemore</span> </p>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-center">
+                <div>
+                    <div class="brdr w-25 mt-3 mb-3" ></div>
+                    <div>
+                        <h2>Trending <br>
+                        TV <br>
+                    To Watch Right Now</h2>
+                        
+                        <p class="text-muted">Most watched movies by dayys</p>
+                    </div>
+                    <div class="brdr w-100 mt-3" ></div>
+                </div>
+            </div>
+            <div *ngFor="let movie of trendingTv" class="col-md-2">
+                <div class="movie">
+                    <img class="w-100" [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path" alt="">
+                    <h3 class="h6 mb-3">{{movie.name}} </h3>           
+                </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-center">
+                <div>
+                    <div class="brdr w-25 mt-3 mb-3" ></div>
+                    <div>
+                        <h2>Trending <br>
+                        people <br>
+                    To Watch Right Now</h2>
+                        
+                        <p class="text-muted">Most watched movies by dayys</p>
+                    </div>
+                    <div class="brdr w-100 mt-3" ></div>
+                </div>
+            </div>
+            <div *ngFor="let movie of trendingPerson" class="col-md-2">
+                <div class="movie">
+                   <div class="imgFix">
+                     <img class="h-100 w-100" [src]="movie.profile_path" alt="">
+                   </div>
+                    <h3 class="h6 mb-3">{{movie.name}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>

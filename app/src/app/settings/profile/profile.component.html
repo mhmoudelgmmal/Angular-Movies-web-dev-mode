@@ -1,0 +1,22 @@
+<div class="container">
+    <form [formGroup]="profileForm">
+        <label>First Name</label>
+        
+        <input [readonly]="isLogin" [(ngModel)]="user.getValue().first_name"  formControlName="first" type="text" class="form-control my-3">
+    
+    
+    
+        <label>last Name</label>
+        <input [readonly]="isLogin" [(ngModel)]="user.getValue().last_name" formControlName="last_name" type="text" class="form-control my-3">
+    
+       
+    
+        <label>age</label>
+        <input [readonly]="isLogin" [(ngModel)]="user.getValue().age" formControlName="age" type="text" class="form-control my-3">
+    
+        
+    
+        <label>email</label>
+        <input [readonly]="isLogin" [(ngModel)]="user.getValue().email" formControlName="email" type="text" class="form-control my-3">    
+    </form>
+</div>
